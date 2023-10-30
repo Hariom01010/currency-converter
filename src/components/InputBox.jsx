@@ -13,11 +13,11 @@ function InputBox({
   const amountInputId = useId()
 
   return (
-      <div className={`bg-white w-[40rem] m-auto rounded-md ${className}`}>
+      <div className={`bg-slate-50 rounded-md w-[23rem] p-4`}>
 
-        <div className='flex justify-between'>
-          <label className='m-4 text-gray-500 font-bold text-lg' htmlFor={amountInputId}>{label}</label>
-          <label className='m-4 text-gray-500  text-[17px]'>Currency Type</label>
+        <div className='flex justify-between mb-5'>
+          <label className='ml-1 text-slate-400' htmlFor={amountInputId}>{label}</label>
+          <label className='mr-1 text-slate-400'>Currency Type</label>
         </div>
 
         <div className='flex justify-between'>
@@ -25,16 +25,15 @@ function InputBox({
             id={amountInputId}
             type="number" 
             placeholder='Amount' 
-            className='m-4 outline-none cursor-pointer' 
+            className='shadow-inner w-[10rem] outline-1 outline-slate-600 p-2' 
             value={amount} 
             onChange={(e)=> onAmountChange && onAmountChange(Number(e.target.value))}
           />
 
           <select 
             id="currency" 
-            className='m-4 p-2 outline-none cursor-pointer bg-gray-300 rounded-sm shadow-inner' 
+            className='outline-none shadow-inne p-1' 
             onChange={(e) => onCurrencyChange && onCurrencyChange(e.target.value)}
-
           >
             {currencyOptions.map((currency)=>{
               return <option key={currency} selected={currency == selectCurrency? "selected": ""} value={currency}>{currency.toUpperCase()}</option>

@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import './App.css'
 import {InputBox} from "./components"
 import useCurrencyInfo from "./hooks/useCurrencyInfo"
 import image from "./assets/money.png"
@@ -26,37 +25,42 @@ function App() {
 
   return (
     <>
-      <div className='flex justify-around items-center'>
-        <div>
-          <img src={image} alt="" className='invert'/>
-        </div>
+      <h1 className='text-slate-50 my-4 text-2xl text-center'>Currency Converter</h1>
 
-        <div>
-          <form action="" onSubmit={(e)=>e.preventDefault()} className='flex flex-col'> 
-            <InputBox 
-              label="From"
-              amount = {amount}
-              onAmountChange={(amount)=>setAmount(amount)}
-              onCurrencyChange={(currency)=> setFrom(currency)}
-              currencyOptions={options}
-              selectCurrency={from}
-              className="mt-8"
-            />
+        <div className='flex flex-col'>
+          <div>
+            <img src={image} alt="money_image" width={300} className='invert mx-auto'/>
+          </div>
 
-            <button className='bg-blue-800 hover:bg-blue-600 text-slate-50 p-1 mx-auto w-[5rem] rounded-lg border-4 border-slate-50' onClick={swap}>Swap</button>
+          <div>
+            <form action="" onSubmit={(e)=>e.preventDefault()} className='flex flex-col items-center'> 
+              <InputBox 
+                label="From"
+                amount = {amount}
+                onAmountChange={(amount)=>setAmount(amount)}
+                onCurrencyChange={(currency)=> setFrom(currency)}
+                currencyOptions={options}
+                selectCurrency={from}
+              />
 
-            <InputBox 
-              label="To"
-              amount={convertedAmount}
-              onAmountChange={(setConvertedAmount)}
-              onCurrencyChange={(currency)=> setTo(currency)}
-              currencyOptions={options}
-              selectCurrency={to}
-            />
+              <button className='bg-cyan-500 text-slate-50 border-slate-50 border-4 p-2 w-[4rem]' onClick={swap}> Swap</button>
 
-            <button type="submit" className='text-slate-100 hover:bg-blue-500 bg-blue-400 p-4 w-[20rem] mx-auto my-8' onClick={convert}>Convert {from.toUpperCase()} to {to.toUpperCase()}</button>
-          </form>
-        </div>
+              <InputBox 
+                label="To"
+                amount={convertedAmount}
+                onAmountChange={(setConvertedAmount)}
+                onCurrencyChange={(currency)=> setTo(currency)}
+                currencyOptions={options}
+                selectCurrency={to}
+              />
+
+              <button type="submit" className='bg-green-500 text-slate-50 p-4 rounded-md m-4 hover:shadow-md hover:shadow-blue-500/50' onClick={convert}>Convert {from.toUpperCase()} to {to.toUpperCase()}</button>
+            </form>
+            <div className='text-right'>
+              <span className='text-slate-50 text-[10px]'>Background Cr:</span>
+              <a href="https://www.vecteezy.com/free-vector/finance-background" target="_blank" className='text-slate-50 text-[10px]'>Finance Background Vectors by Vecteezy</a>
+            </div>
+          </div>
       </div>
     </>
   )
